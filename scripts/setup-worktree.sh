@@ -32,12 +32,14 @@ fi
 echo "Main repo:  $MAIN_REPO"
 echo "Worktree:   $WORKTREE_ROOT"
 
-# === Symlink targets (customize during install) ===
-# .env symlink
-if [ -e "$MAIN_REPO/.env" ] && [ ! -e "$WORKTREE_ROOT/.env" ]; then
-  ln -sf "$MAIN_REPO/.env" "$WORKTREE_ROOT/.env"
-  echo ".env -> $MAIN_REPO/.env"
-fi
+# === Symlink targets ===
+# install.sh will populate this section.
+# To add manually, use this pattern:
+#
+# if [ -e "$MAIN_REPO/<target>" ] && [ ! -e "$WORKTREE_ROOT/<target>" ]; then
+#   ln -sf "$MAIN_REPO/<target>" "$WORKTREE_ROOT/<target>"
+#   echo "<target> -> $MAIN_REPO/<target>"
+# fi
 
 echo "Worktree setup complete"
 exit 0
