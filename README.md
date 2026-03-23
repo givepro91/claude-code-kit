@@ -2,6 +2,8 @@
 
 Ready-to-use skills and workflows for [Claude Code](https://docs.anthropic.com/en/docs/claude-code).
 
+![demo](demo.gif)
+
 ## What's included
 
 | Skill | Description |
