@@ -1,4 +1,4 @@
-Leave the worktree created by `/worktree-enter` and return to the main repository.
+Leave the worktree created by `/worktree-enter` and return to the original repository.
 
 ## Usage
 ```
@@ -9,8 +9,8 @@ Examples: `/worktree-exit keep`, `/worktree-exit remove`, `/worktree-exit` (prom
 ## Steps
 
 1. Check the argument.
-   - `keep` — preserve the branch and worktree directory, return to main
-   - `remove` — delete the worktree, return to main
+   - `keep` — preserve the branch and worktree directory, return to original repo
+   - `remove` — delete the worktree, return to original repo
    - No argument — prompt the user:
      ```
      How do you want to exit?
@@ -20,7 +20,7 @@ Examples: `/worktree-exit keep`, `/worktree-exit remove`, `/worktree-exit` (prom
 
 2. Call the `ExitWorktree` tool with the chosen action.
    - If `remove` is chosen and there are uncommitted changes, the tool will refuse.
-     Ask the user to confirm, then retry with `discard_changes: true`.
+     Warn the user that uncommitted changes will be lost, ask for explicit confirmation, then retry with `discard_changes: true`.
 
 3. After returning, show a summary:
    - If `keep`:
@@ -30,15 +30,14 @@ Examples: `/worktree-exit keep`, `/worktree-exit remove`, `/worktree-exit` (prom
      Branch <branch-name> is kept.
      Re-enter later: /worktree-enter <task-name>
 
-     To merge into main:
-       git merge --no-ff <branch-name> -m "merge: <branch-name> → main"
+     To merge:
+       git merge --no-ff <branch-name>
      ```
    - If `remove`:
      ```
-     Worktree removed. Back on main.
+     Worktree removed. Back on original branch.
      ```
 
 ## Notes
 
-- Only works for worktrees created via `/worktree-enter`
-- On session end, a keep/remove prompt appears automatically
+- Only works for worktrees created via `/worktree-enter`. For manually created worktrees, use `git worktree remove` directly.

@@ -1,1 +1,4 @@
 .DS_Store
+.bkit-memory.json
+.pdca-status.json
+.claude/memory/events/

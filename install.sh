@@ -170,5 +170,5 @@ for skill in "${SELECTED_SKILLS[@]}"; do
 done
 if [ "$HAS_WORKTREE" = true ]; then
   echo ""
-  echo "Merge rule: git merge --no-ff feat/<task> -m \"merge: feat/<task> -> main\""
+  echo "Merge tip: git merge --no-ff <branch> to preserve branch history"
 fi

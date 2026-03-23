@@ -1,5 +1,4 @@
 Create a new git worktree for the current task and switch into it within this Claude Code session.
-No new terminal needed — isolate your work right here.
 
 ## Usage
 ```
@@ -24,14 +23,12 @@ Branch: <branch-name>
 Path:   <worktree-path>
 
 To leave:
-  /worktree-exit keep    # preserve branch, return to main
-  /worktree-exit remove  # delete worktree, return to main
-
-Merge rule (always --no-ff):
-  git merge --no-ff <branch-name> -m "merge: <branch-name> → main"
+  /worktree-exit keep    # preserve branch
+  /worktree-exit remove  # delete worktree
 ```
 
 ## Notes
 
-- Cannot nest — if already in a worktree, refuse entry (check: `git worktree list`)
-- Difference from creating a new terminal worktree: this switches the current session's working directory
+- Cannot nest — if already in a worktree, refuse entry. Check with `git worktree list` and compare the current directory against the list.
+- This switches the current session's working directory, no new terminal needed.
+- Consider merging with `--no-ff` to preserve branch history in the git log.

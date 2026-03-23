@@ -11,14 +11,14 @@ Examples: `/code-review src/auth.ts`, `/code-review` (reviews staged changes)
 
 1. Determine the review target:
    - If a file/path is given, read that file.
-   - If no argument, run `git diff --cached` (staged changes). If nothing staged, use `git diff` (unstaged).
-   - If the user has selected code in the IDE, review that selection.
+   - If no argument, run `git diff --cached` (staged changes). If nothing staged, use `git diff` (unstaged). If both are empty, inform the user there's nothing to review.
+   - If the user has selected code in the IDE (VS Code extension context), review that selection.
 
 2. Analyze the code on these axes:
    - **Simplicity** — Can anything be removed or simplified without losing functionality?
    - **Clarity** — Is the intent obvious? Are names descriptive?
    - **Correctness** — Any bugs, edge cases, or off-by-one errors?
-   - **Security** — Any injection, XSS, or credential exposure risks?
+   - **Security** — Any injection, credential exposure, or common vulnerability risks?
 
 3. Output a structured review:
 ```
